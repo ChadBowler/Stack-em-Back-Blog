@@ -29,6 +29,7 @@ app.use(session(sess));
 
 // const hbs = exphbs.create({ helpers });
 
+//set up view engine, point to the /views directory
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', './views');
