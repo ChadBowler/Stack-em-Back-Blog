@@ -15,14 +15,14 @@ BLog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    content: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    author_id: {
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'author',
+        model: 'user',
         key: 'id',
       },
     },
@@ -31,7 +31,7 @@ BLog.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'BLog',
+    modelName: 'bLog',
   }
 );
 
