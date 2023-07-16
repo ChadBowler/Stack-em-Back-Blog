@@ -8,10 +8,11 @@ router.get('/', async (req, res) => {
       include: [{ 
         model: User
       },
-      {
-        model: Comment,
-        through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
-       }]
+    //   {
+    //     model: Comment,
+    //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
+    //    }
+    ]
     });
 
     if (!blogData) {
@@ -32,10 +33,11 @@ router.get('/:id', async (req, res) => {
       include: [{ 
         model: User
       },
-      {
-        model: Comment,
-        through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
-       }]
+    //   {
+    //     model: Comment,
+    //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
+    //    }
+    ]
     });
 
     if (!blogData) {
@@ -50,27 +52,41 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new Blog
-router.post('/', (req, res) => {
-  Blog.create(req.body)
-    .then((blog) => {
-      // if there are blog Comments, we need to create pairings to bulk create
-      if (req.body.CommentIds.length) {
-        const blogCommentIdArr = req.body.CommentIds.map((comment_id) => {
-          return {
-            blog_id: blog.id,
-            comment_id,
-          };
-        });
-        return blogComment.bulkCreate(blogCommentIdArr);
-      }
-      // if no Blog Comments, just respond
-      res.status(200).json(blog);
-    })
-    .then((blogCommentIds) => res.status(200).json(blogCommentIds))
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
+router.post('/', async (req, res) => {
+
+try {
+    const blog = await Blog.create({
+        title: req.body.title,
+        content: req.body.content,
+        user_id: req.session.user
     });
+    // res.redirect(`blogs/${blog.id}`)   
+     res.status(200).json(blog)
+} catch (error) {
+    res.status(400).json(error)
+}
+
+
+//   Blog.create(req.body)
+//     .then((blog) => {
+//       // if there are blog Comments, we need to create pairings to bulk create
+//       if (req.body.CommentIds.length) {
+//         const blogCommentIdArr = req.body.CommentIds.map((comment_id) => {
+//           return {
+//             blog_id: blog.id,
+//             comment_id,
+//           };
+//         });
+//         return blogComment.bulkCreate(blogCommentIdArr);
+//       }
+//       // if no Blog Comments, just respond
+//       res.status(200).json(blog);
+//     })
+//     .then((blogCommentIds) => res.status(200).json(blogCommentIds))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(400).json(err);
+//     });
 });
 
 // update Blog
