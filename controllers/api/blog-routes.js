@@ -107,22 +107,32 @@ router.put('/:id', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  try {
-    const blogData = await Blog.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
-
-    if (!blogData) {
-      res.status(404).json({ message: 'No Blog found with that id!' });
-      return;
-    }
-
-    res.status(200).json(blogData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+    try {
+        const blogData = await Blog.findByPk(req.params.id, {
+          include: [{ 
+            model: User
+          },
+        //   {
+        //     model: Comment,
+        //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
+        //    }
+        ]
+        });
+        //run checks to make sure there is a current session, the blog can be found, and the user is the owner of the blog
+        if (!req.session.loggedIn) {
+          res.status(400).json({ message: 'You must be logged in to delete a blog'});
+          return;
+        } else if (!blogData) {
+            res.status(404).json({ message: 'No Blog found with that id!' });
+        } else if (req.session.user !== blogData.user_id) {
+            res.status(400).json({ message: 'You must be the owner of this blog to delete it'})
+        } else {
+            blogData.destroy();
+            res.status(200).json( { message: 'Blog successfully deleted'})
+        };
+      } catch (err) {
+        res.status(500).json(err);
+      };
 });
 
 module.exports = router;
