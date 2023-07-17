@@ -38,13 +38,14 @@ router.get('/blogs/:id', async (req, res) => {
             'comment_content',
             'user_name',
             'blog_id'
-          ],
+          ]
         },
       ],
     });
 
     const blog = blogData.get({ plain: true });
     // res.status(200).json(blog)
+    console.log(blog);
     res.render('blog', { blog, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
@@ -52,18 +53,6 @@ router.get('/blogs/:id', async (req, res) => {
   }
 });
 
-// GET one Comment
-// router.get('/comment/:id', async (req, res) => {
-//   try {
-//     const dbCommentData = await Comment.findByPk(req.params.id);
-
-//     const comment = dbCommentData.get({ plain: true });
-//     res.render('comment', { comment, loggedIn: req.session.loggedIn });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
 
 // Login route
 router.get('/login', (req, res) => {
