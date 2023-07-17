@@ -37,7 +37,6 @@ router.get('/:id', async (req, res) => {
        }
     ]
     });
-    console.log(blogData);
     if (!blogData) {
       res.status(404).json({ message: 'No Blog found with that id!' });
       return;
@@ -65,7 +64,7 @@ router.post('/', async (req, res) => {
                 user_id: req.session.user
             });
             // res.redirect(`blogs/${blog.id}`)   
-            res.status(200).json(blog)
+            res.status(200).redirect('/')
         };
     } catch (err) {
         res.status(400).json(err)

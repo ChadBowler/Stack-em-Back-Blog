@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Blog, Comment } = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -21,6 +21,27 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//dashboard
+router.get('/dashboard', async (req, res) => {
+    try {
+        const blogData = await Blog.findAll({
+          where: [{ 
+            user_id: req.session.user
+          },
+        ]
+        });
+        
+        if (!blogData) {
+          res.status(404).json({ message: 'No Blogs found!' });
+          return;
+        }
+        res.render('dashboard', { blogData, loggedIn: req.session.loggedIn })
+        // res.status(200).json(blogData);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+})
 
 // Login
 router.post('/login', async (req, res) => {

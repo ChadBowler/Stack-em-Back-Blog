@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="container">
+    {{#each blogData as |blog|}}
+        <div class="blog" style="width: 18rem;">
+            <a href="/blogs/{{blog.dataValues.id}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{blog.dataValues.title}}</h5><span>By: {{blog.dataValues.user_id}}</span>
+                    
+                    <p class="card-text">{{blog.dataValues.content}}</p>
+                    
+                    <div class="comments">
+                        {{#each blog.dataValues.comments as |comment|}}
+                            {{> comment-details}}
+                        {{/each}}
+                    </div>
+
+                    {{#if loggedIn}}
+                    <a href="/api/comments/{{blog.dataValues.id}}" class="card-link">Add a comment</a>
+                    {{/if}}
+                </div>
+            </a>
+        </div>
+    {{/each}}
+    </div>
+    <div class="container">
+        <form class="add-blog-form">
+            <input class="input form-control" id="blog-title" type="text" placeholder="Title">
+            <input class="textarea form-control" id="blog-content" placeholder="Blog content">
+            <button class="button" type="submit">Add new Blog</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/adds.js"></script>
