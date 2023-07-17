@@ -8,10 +8,6 @@ router.get('/', async (req, res) => {
       include: [{ 
         model: User
       },
-    //   {
-    //     model: Comment,
-    //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
-    //    }
     ]
     });
 
@@ -33,7 +29,7 @@ router.get('/:id', async (req, res) => {
       include: [{ 
         model: User
       },
-      {
+      {//get comments associated with this blog
         model: Comment,
         where: {
             blog_id: req.params.id
@@ -82,10 +78,6 @@ router.put('/:id', async (req, res) => {
           include: [{ 
             model: User
           },
-        //   {
-        //     model: Comment,
-        //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
-        //    }
         ]
         });
         //run checks to make sure there is a current session, the blog can be found, and the user is the owner of the blog
@@ -114,10 +106,6 @@ router.delete('/:id', async (req, res) => {
           include: [{ 
             model: User
           },
-        //   {
-        //     model: Comment,
-        //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
-        //    }
         ]
         });
         //run checks to make sure there is a current session, the blog can be found, and the user is the owner of the blog
