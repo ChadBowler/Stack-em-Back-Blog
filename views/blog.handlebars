@@ -1,3 +1,14 @@
 <div class="container">
-    {{> blog-details}}
+   
+    <div class="blog" style="width: 18rem;">
+        <a href="/blogs/{{blog.id}}">
+            <div class="card-body">
+                <h5 class="card-title">{{blog.title}}</h5><span>{{blog.user_id}}</span>
+                
+                <p class="card-text">{{blog.content}}</p>
+                <a href="#" class="card-link">Add a comment</a>
+            </div>
+        </a>
+    </div>
+  
 </div>

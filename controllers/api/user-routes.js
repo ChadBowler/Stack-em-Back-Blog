@@ -13,7 +13,8 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user = req.body.username;
-      res.status(200).json(userData);
+      res.status(200).redirect('/');
+    //   res.status(200).json(userData);
     });
   } catch (err) {
     console.log(err);
@@ -27,14 +28,14 @@ router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
-        email: req.body.email,
+        username: req.body.username,
       },
     });
     //email validation
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
     //password validation via User model method
@@ -43,7 +44,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
     //upon validation, save session
