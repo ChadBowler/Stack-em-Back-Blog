@@ -33,10 +33,12 @@ router.get('/:id', async (req, res) => {
       include: [{ 
         model: User
       },
-    //   {
-    //     model: Comment,
-    //     through: { attributes: [ 'id', 'user_name', 'blog_id' ]}
-    //    }
+      {
+        model: Comment,
+        where: {
+            blog_id: req.params.id
+        }
+       }
     ]
     });
 
