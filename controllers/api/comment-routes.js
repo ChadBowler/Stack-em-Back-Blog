@@ -7,10 +7,38 @@ const { Blog, User, Comment } = require('../../models');
 //     next()
 // }
 
+router.get('/:id', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) {
+            res.redirect('/login')
+        } else {
+            const blogData = await Blog.findByPk(req.params.id, {
+                include: [
+                  {
+                    model: Comment,
+                    attributes: [
+                      'id',
+                      'comment_content',
+                      'user_name',
+                      'blog_id'
+                    ]
+                  },
+                ],
+              });
+          
+              const blog = blogData.get({ plain: true });
+              // res.status(200).json(blog)
+              res.render('blog', {blog, loggedIn: req.session.loggedIn});
+        }
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
 // create new Comment
 router.post('/:id', async (req, res) => {
     try {
-        //check for a current session before posting new blog
+        //check for a current session before posting new comment
         if (!req.session.loggedIn) {
             res.status(400).json({ message: 'Please log in first'})
         } else {

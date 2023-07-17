@@ -8,8 +8,13 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    {{!-- add the navbar partial --}}
     {{> navbar}}
     {{{body}}}
-
+    <p>{{loggedIn}}</p>
+    {{!-- if someone is logged in, load the logout script --}}
+    {{#if loggedIn}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 </html>

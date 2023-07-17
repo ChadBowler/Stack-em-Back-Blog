@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
       res.status(404).json({ message: 'No Blogs found!' });
       return;
     }
-    res.render('blog', blogData)
+    res.render('blog', { blogData, loggedIn: req.session.loggedIn })
     // res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
@@ -37,13 +37,14 @@ router.get('/:id', async (req, res) => {
        }
     ]
     });
-
+    console.log(blogData);
     if (!blogData) {
       res.status(404).json({ message: 'No Blog found with that id!' });
       return;
     }
     const blog = blogData.get({ plain: true});
-    res.render('blog', blog)
+    
+    res.render('blog', { blog, loggedIn: req.session.loggedIn })
     // res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);

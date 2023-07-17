@@ -1,10 +1,11 @@
 <div class="blog" style="width: 18rem;">
-<a href="/blogs/{{id}}">
+<a href="/api/blogs/{{id}}">
     <div class="card-body">
         <h5 class="card-title">{{title}}</h5><span>{{user_id}}</span>
         
         <p class="card-text">{{content}}</p>
-        <a href="#" class="card-link">Add a comment</a>
+        <a href="/api/comments/{{id}}" class="card-link">Add a comment</a>
+        
     </div>
 </a>
 </div>

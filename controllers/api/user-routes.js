@@ -24,14 +24,14 @@ router.post('/', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
-    //find user by email
+    //find user by username
   try {
     const userData = await User.findOne({
       where: {
         username: req.body.username,
       },
     });
-    //email validation
+    //username validation
     if (!userData) {
       res
         .status(400)
