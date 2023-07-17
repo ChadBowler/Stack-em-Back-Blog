@@ -10,6 +10,10 @@ body, html {
 }
 
 .brand-name {
-    font-size: 2rem;
+    font-size: 4rem;
     text-decoration: none;
+}
+
+.caveat-text{
+    font-family: 'Caveat', cursive;;
 }

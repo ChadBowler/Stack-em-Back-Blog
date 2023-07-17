@@ -1,0 +1,30 @@
+<div class="container">
+   
+    <div class="blog" style="width: 18rem;">
+        <a href="/blogs/{{blog.id}}">
+            <div class="card-body">
+                <h5 class="card-title caveat-text is-size-3">{{blog.title}}</h5><span>By: {{blog.user_id}}</span>
+                
+                <p class="card-text">{{blog.content}}</p>
+                
+                <div class="comments">
+                    {{#each blog.comments as |comment|}}
+                        {{> comment-details}}
+                    {{/each}}
+                </div>
+
+                
+            </div>
+        </a>
+    </div>
+  <div class="container">
+        <form class="add-comment-form">
+            
+            <input class="textarea form-control" id="comment-content" placeholder="Comment...">
+            <input type="number" style="display: none;" id="blog-id" value="{{blog.id}}" readonly aria-readonly="true">
+            <button class="button" type="submit">Add new Comment</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/adds.js"></script>
