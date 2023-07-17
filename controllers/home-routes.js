@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET one Blog
-router.get('/blog/:id', async (req, res) => {
+router.get('/blogs/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
@@ -44,8 +44,8 @@ router.get('/blog/:id', async (req, res) => {
     });
 
     const blog = blogData.get({ plain: true });
-    res.status(200).json(blog)
-    // res.render('blog', { blog, loggedIn: req.session.loggedIn });
+    // res.status(200).json(blog)
+    res.render('blog', { blog, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

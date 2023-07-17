@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
       res.status(404).json({ message: 'No Blogs found!' });
       return;
     }
-
-    res.status(200).json(blogData);
+    res.render('blog', blogData)
+    // res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -42,8 +42,9 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'No Blog found with that id!' });
       return;
     }
-
-    res.status(200).json(blogData);
+    const blog = blogData.get({ plain: true});
+    res.render('blog', blog)
+    // res.status(200).json(blogData);
   } catch (err) {
     res.status(500).json(err);
   }
