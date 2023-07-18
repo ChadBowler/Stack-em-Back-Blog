@@ -40,12 +40,21 @@ const loginFormHandler = async (event) => {
       }
     }
   };
-  
-  document
+  try {
+    document
     .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
+    .addEventListener('submit', loginFormHandler);  
+  } catch (error) {
+    
+  }
   
-  document
+  try {
+    
+  } catch (error) {
+    document
     .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+    .addEventListener('submit', signupFormHandler);  
+  }
+  
+  
   
