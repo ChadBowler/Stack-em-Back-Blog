@@ -45,6 +45,30 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// get update blog page
+router.get('/update/:id', async (req, res) => {
+  try {
+    
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [{ 
+        model: User
+      },
+      {//get comments associated with this blog
+        model: Comment,
+        attributes: ['user_name', 'comment_content', 'blog_id', ['created_at', 'createdAt']],
+       }]
+    });
+    if (!blogData) {
+      res.status(404).render('404');
+      return;
+    }
+    const blog = blogData.get({ plain: true});
+    res.render('blog-update', { blog, loggedIn: req.session.loggedIn })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // create new Blog
 router.post('/', async (req, res) => {
     try {

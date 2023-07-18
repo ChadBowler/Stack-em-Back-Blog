@@ -19,14 +19,12 @@
 
                 {{#if loggedIn}}
                 <div class="columns">
-                    <div class="column is-4 card-footer">
-                        <a href="/api/comments/{{blog.id}}" class="card-link red-link"> + Add a comment + </a>
-                    </div>
-                    <div class="column is-4 card-footer">
-                        <a href="/api/blogs/update/{{blog.id}}" class="card-link red-link"> Update Blog </a>
-                    </div>
-                    <div class="column is-4 card-footer">
-                        <a id="delete-blog" href="/api/blogs/{{blog.id}}" class="card-link red-link delete-blog"> - Delete Blog - </a>
+                    <div class="m-3 card-backing container columns-3">
+                        <form class="update-blog-form">
+                            <input class="input form-control m-3 ibm-text box-shadow" id="blog-title" type="text" placeholder="Title">
+                            <input class="textarea form-control m-3 ibm-text box-shadow" id="blog-content" placeholder="Blog content">
+                            <button class="button m-3 ibm-text box-shadow" type="submit">Update Blog</button>
+                        </form>
                     </div>
                 </div>
                 {{/if}}
@@ -34,4 +32,4 @@
         </a>
     </div>
 </div>
-<script src="/js/delete.js"></script>
+<script src="/js/update.js"></script>
