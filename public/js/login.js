@@ -45,15 +45,15 @@ const loginFormHandler = async (event) => {
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);  
   } catch (error) {
-    
+    console.log(error);
   }
   
   try {
-    
-  } catch (error) {
     document
     .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);  
+    .addEventListener('submit', signupFormHandler);
+  } catch (error) {
+      console.log(error);
   }
   
   
