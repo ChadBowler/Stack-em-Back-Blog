@@ -1,9 +1,14 @@
 <div class="comment m-3 box-shadow" style="width: 18rem;">
     <div class="card-body p-2">
-        <span class="comment-name">By: {{user_name}}</span>
-        
-        <p class="card-text ibm-text">{{comment_content}}</p>
-       
+        <div class="column is-12 ibm-text">
+            <span class="comment-name">{{format_date createdAt}}</span>
+        </div>
+        <div class="column is-12 ibm-text">
+            <p class="card-text ibm-text">{{comment_content}}</p>
+        </div>
+       <div class="column is-12 ibm-text">
+            <span class="comment-name">- {{user_name}}</span>
+       </div>
         
     </div>
 

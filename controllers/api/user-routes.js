@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 router.get('/dashboard', async (req, res) => {
     try {
       if (!req.session.loggedIn) {
-        res.redirect('/')
+        res.redirect('/signup')
       } else {
         const blogData = await Blog.findAll({
           where: [{ 
@@ -35,7 +35,7 @@ router.get('/dashboard', async (req, res) => {
           include: [
             {
               model: Comment,
-              attributes: ['user_name', 'comment_content', 'blog_id'],
+              attributes: ['user_name', 'comment_content', 'blog_id', ['created_at', 'createdAt']],
             },]
         });
         
@@ -47,11 +47,10 @@ router.get('/dashboard', async (req, res) => {
         res.render('dashboard', { blogs, loggedIn: req.session.loggedIn })
         // res.status(200).json(blogData);
       }
-        
       } catch (err) {
         res.status(500).json(err);
       }
-})
+});
 
 // Login
 router.post('/login', async (req, res) => {
@@ -107,5 +106,9 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+router.get('/*', (req, res) => {
+  res.status(404).render('404');
+})
 
 module.exports = router;

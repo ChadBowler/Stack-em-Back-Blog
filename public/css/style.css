@@ -18,7 +18,7 @@ body, html {
 .navbar {
     background-color: #8C030E;
 }
-.nav-link, .navbar-link, .card-link, .caveat-text, .comment-name, .blog-username {
+.nav-link, .navbar-link, .card-link, .caveat-text, .comment-name, .blog-username, .card-text {
     color: white;
     text-shadow: -1px 1px 2px #000,
 				  1px 1px 2px #000,
@@ -66,7 +66,7 @@ body, html {
     background-color: #faebd7;
 }
 
-.label-text, .comment-header {
+.label-text, .comment-header, .account-text {
     color: white;
     font-size: 2.2rem;
     text-shadow: -1px 1px 2px #000,
@@ -82,7 +82,7 @@ body, html {
 .button:hover, .menu-item:hover {
     background-color: #8C030E !important;
     color: white !important;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     text-shadow: -1px 1px 2px #000,
 				  1px 1px 2px #000,
 				  1px -1px 0 #000,

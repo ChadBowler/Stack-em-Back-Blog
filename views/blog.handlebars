@@ -1,12 +1,15 @@
 <div class="container">
    
     <div class="card-backing box-shadow p-2">
-        <a href="/blogs/{{blog.id}}">
+        <a href="/api/blogs/{{blog.id}}">
             <div class="card-body box-shadow p-3 m-3">
                 <h5 class="card-title caveat-text is-size-2">{{blog.title}}</h5><span class="blog-username">By: {{blog.user_id}}</span>
-                
-                <p class="card-text ibm-text">{{blog.content}}</p>
-                
+                <div class="column is-12 ibm-text">
+                    <span class="comment-name">{{format_date blog.createdAt}}</span>
+                </div>
+                <div class="column is-12 ibm-text">
+                    <p class="card-text ibm-text">{{blog.content}}</p>
+                </div>
                 <div class="comments card-backing box-shadow m-3 p-2">
                     <h3 class="comment-header caveat-text">Comments:</h3>
                     {{#each blog.comments as |comment|}}
@@ -16,7 +19,7 @@
 
                 {{#if loggedIn}}
                 <div class="column is-12 card-footer">
-                    <a href="/api/comments/{{blog.id}}" class="card-link"> + Add a comment + </a>
+                    <a href="/api/comments/{{blog.id}}" class="card-link red-link"> + Add a comment + </a>
                 </div>
                 {{/if}}
             </div>

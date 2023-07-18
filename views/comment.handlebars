@@ -1,12 +1,15 @@
 <div class="container column is-multiline card-backing box-shadow">
    
     <div class="card-backing card-body m-3">
-        <a href="/blogs/{{blog.id}}">
+        <a href="/api/blogs/{{blog.id}}">
             <div class="card-body p-3 box-shadow">
                 <h5 class="card-title caveat-text is-size-2">{{blog.title}}</h5><span class="blog-username">By: {{blog.user_id}}</span>
-                
-                <p class="card-text ibm-text">{{blog.content}}</p>
-                
+                <div class="column is-12 ibm-text">
+                    <span class="comment-name">{{format_date blog.createdAt}}</span>
+                </div>
+                <div class="column is-12 ibm-text">
+                    <p class="card-text ibm-text">{{blog.content}}</p>
+                </div>
                 <div class="comments card-backing m-3 p-2 box-shadow">
                     <h3 class="comment-header caveat-text">Comments:</h3>
                     {{#each blog.comments as |comment|}}
@@ -23,7 +26,7 @@
             
             <input class="textarea form-control m-3 ibm-text box-shadow" id="comment-content" placeholder="Comment...">
             <input type="number" style="display: none;" id="blog-id" value="{{blog.id}}" readonly aria-readonly="true">
-            <button class="button ibm-text box-shadow" type="submit">Add new Comment</button>
+            <button class="button ibm-text box-shadow" type="submit">Add Comment</button>
         </form>
     </div>
 </div>

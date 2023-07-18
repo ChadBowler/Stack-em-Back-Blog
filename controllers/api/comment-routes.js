@@ -20,7 +20,8 @@ router.get('/:id', async (req, res) => {
                       'id',
                       'comment_content',
                       'user_name',
-                      'blog_id'
+                      'blog_id',
+                      ['created_at', 'createdAt']
                     ]
                   },
                 ],
