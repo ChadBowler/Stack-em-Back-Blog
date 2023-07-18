@@ -1,11 +1,18 @@
-<div class="blog" style="width: 18rem;">
-<a href="/api/blogs/{{id}}">
-    <div class="card-body">
-        <h5 class="card-title caveat-text is-size-3">{{title}}</h5><span>By: {{user_id}}</span>
-        
-        <p class="card-text">{{content}}</p>
-        <a href="/api/comments/{{id}}" class="card-link">Add a comment</a>
-        
+<div class="blog column is-3 card-backing" style="margin: 1rem;">
+    <div class="container card-backing">
+        <a href="/api/blogs/{{id}}">
+            <div class="card-body m-3 columns is-multiline">
+                <div class="column is-12 ibm-text">
+                    <h5 class="card-title caveat-text is-size-3">{{title}}</h5><span>By: {{user_id}}</span>
+                </div>
+                
+                <div class="column">
+                    <p class="card-content ibm-text">{{content}}</p>
+                </div>
+                <div class="column is-12 card-footer">
+                    <a href="/api/comments/{{id}}" class="card-link card-footer-item">Add a comment</a>
+                </div>
+            </div>
+        </a>
     </div>
-</a>
 </div>

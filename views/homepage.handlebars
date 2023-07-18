@@ -1,3 +1,7 @@
-{{#each blogs as |blog|}}
-{{> blog-details}}
-{{/each}}
+<div class="columns">
+    <div class="column columns is-multiline is-10 is-offset-2">
+    {{#each blogs as |blog|}}
+    {{> blog-details}}
+    {{/each}}
+    </div>
+</div>

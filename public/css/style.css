@@ -1,19 +1,61 @@
+/* * {
+    border: 2px solid black;
+} */
+
 body, html {
     height: 100%;
     width: 100%;
-    /* background-image: url('../assets/images/red_and_pink_abstract_bg.png');
-    background-size: contain; */
+    background-image: url('../assets/images/red_and_black_abstract_bg.png');
+    background-size: contain;
+}
+
+.navbar {
+    background-color: #8C030E;
+}
+.nav-link, .navbar-link {
+    color: white;
+    text-shadow: -1px 1px 2px #000,
+				  1px 1px 2px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
 }
 
 .blog {
     border: 3px solid black;
 }
+#header-title {
+    text-align: center;
+}
+#header-title > a {
+    color: white;
+	
+	text-shadow: -1px 1px 2px #000,
+				  1px 1px 2px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
+}
 
 .brand-name {
-    font-size: 4rem;
+    font-size: 6rem;
     text-decoration: none;
+    text-align: center;
+}
+
+.ibm-text {
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 .caveat-text{
     font-family: 'Caveat', cursive;;
+}
+
+.card-body {
+    
+    background-color: #8C030E;
+}
+.card-body > a {
+    color: white;
+}
+.card-backing {
+    background-color: antiquewhite;
 }
