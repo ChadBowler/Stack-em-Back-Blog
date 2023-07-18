@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 3306;
 
 let sequelize;
 
-if (process.env.JAWSDB_AMBER) {
-  sequelize = new Sequelize(process.env.JAWSDB_AMBER);
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,
