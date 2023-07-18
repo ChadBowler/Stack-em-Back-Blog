@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
       },
     ]
     });
-    console.log(blogData);
     if (!blogData) {
       res.status(404).json({ message: 'No Blogs found!' });
       return;
@@ -24,7 +23,6 @@ router.get('/', async (req, res) => {
 
 // get one Blog
 router.get('/:id', async (req, res) => {
-  console.log('got here');
   try {
     
     const blogData = await Blog.findByPk(req.params.id, {
@@ -34,14 +32,8 @@ router.get('/:id', async (req, res) => {
       {//get comments associated with this blog
         model: Comment,
         attributes: ['user_name', 'comment_content', 'blog_id', ['created_at', 'createdAt']],
-        // where: {
-        //     blog_id: req.params.id
-        // },
-        
-       }
-    ]
+       }]
     });
-    console.log(blogData);
     if (!blogData) {
       res.status(404).render('404');
       return;
