@@ -12,7 +12,7 @@ body, html {
 .navbar {
     background-color: #8C030E;
 }
-.nav-link, .navbar-link, .card-link {
+.nav-link, .navbar-link, .card-link, .caveat-text, .comment-name {
     color: white;
     text-shadow: -1px 1px 2px #000,
 				  1px 1px 2px #000,
@@ -60,9 +60,9 @@ body, html {
     background-color: antiquewhite;
 }
 
-.label-text {
+.label-text, .comment-header {
     color: white;
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     text-shadow: -1px 1px 2px #000,
 				  1px 1px 2px #000,
 				  1px -1px 0 #000,
@@ -78,10 +78,20 @@ body, html {
 				  1px -1px 0 #000,
 				  -1px -1px 0 #000;
 }
+.comment-name {
+    font-size: 1.2rem;
+}
 
-.bdr {
-    /* border: 2px solid black; */
+.comment-text {
+    text-align: center;
+}
+
+.cntr {
+   
     display: flex;
     justify-content: center;
-    
+}
+
+.bdr {
+ border: 2px solid black;
 }

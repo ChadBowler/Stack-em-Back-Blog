@@ -25,19 +25,29 @@ router.post('/', async (req, res) => {
 //dashboard
 router.get('/dashboard', async (req, res) => {
     try {
+      if (!req.session.loggedIn) {
+        res.redirect('/')
+      } else {
         const blogData = await Blog.findAll({
           where: [{ 
             user_id: req.session.user
-          },
-        ]
+          },],
+          include: [
+            {
+              model: Comment,
+              attributes: ['user_name', 'comment_content', 'blog_id'],
+            },]
         });
         
         if (!blogData) {
           res.status(404).json({ message: 'No Blogs found!' });
           return;
         }
-        res.render('dashboard', { blogData, loggedIn: req.session.loggedIn })
+        const blogs = blogData.map((blog) => blog.get({ plain:true }))
+        res.render('dashboard', { blogs, loggedIn: req.session.loggedIn })
         // res.status(200).json(blogData);
+      }
+        
       } catch (err) {
         res.status(500).json(err);
       }
