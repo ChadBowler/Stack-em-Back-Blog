@@ -1,15 +1,15 @@
 
-<div class="card-backing container column is-multiline">
+<div class="card-backing container column is-multiline box-shadow">
     <div class="container m-3 columns-12">
     {{#each blogs as |blog|}}
-        <div class="blog card-body m-3">
+        <div class="blog card-body m-3 box-shadow">
             <a href="/blogs/{{blog.id}}">
                 <div class="card-body m-3">
                     <h5 class="card-title caveat-text is-size-2">{{blog.title}}</h5><span class="blog-username">By: {{blog.user_id}}</span>
                     
                     <p class="card-text ibm-text">{{blog.content}}</p>
                     
-                    <div class="comments card-backing">
+                    <div class="comments card-backing box-shadow p-2">
                         <h3 class="comment-header caveat-text">Comments:</h3>
                         {{#each blog.comments as |comment|}}
                             <div class="ibm-text m-3 p-2 comment-text">
@@ -28,9 +28,9 @@
     </div>
     <div class="m-3 card-backing container columns-3">
         <form class="add-blog-form">
-            <input class="input form-control m-3 ibm-text" id="blog-title" type="text" placeholder="Title">
-            <input class="textarea form-control m-3 ibm-text" id="blog-content" placeholder="Blog content">
-            <button class="button m-3 ibm-text" type="submit">Add new Blog</button>
+            <input class="input form-control m-3 ibm-text box-shadow" id="blog-title" type="text" placeholder="Title">
+            <input class="textarea form-control m-3 ibm-text box-shadow" id="blog-content" placeholder="Blog content">
+            <button class="button m-3 ibm-text box-shadow" type="submit">Add new Blog</button>
         </form>
     </div>
 </div>
