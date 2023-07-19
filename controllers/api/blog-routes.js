@@ -92,7 +92,6 @@ router.post('/', async (req, res) => {
 
 // update Blog
 router.put('/:id', async (req, res) => {
-
     try {
         const blogData = await Blog.findByPk(req.params.id, {
           include: [{ 

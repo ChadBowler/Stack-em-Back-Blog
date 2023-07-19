@@ -12,10 +12,10 @@
                     <div class="column is-12 ibm-text">
                         <p class="card-text ibm-text">{{blog.content}}</p>
                     </div>
-                    <div class="comments card-backing box-shadow p-2">
+                    <div class="comments card-backing box-shadow m-3 p-2">
                         <h3 class="comment-header caveat-text">Comments:</h3>
                         {{#each blog.comments as |comment|}}
-                            <div class="ibm-text m-3 p-2 comment-text">
+                            <div class="">
                             {{> comment-details}}
                             </div>
                         {{/each}}

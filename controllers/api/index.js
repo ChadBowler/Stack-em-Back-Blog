@@ -8,4 +8,9 @@ router.use('/users', userRoutes);
 router.use('/blogs', blogRoutes);
 router.use('/comments', commentRoutes);
 
+//for any routes that don't fit any of our use routes
+router.get('/*', (req, res) => {
+    res.status(404).render('404');
+});
+
 module.exports = router;
