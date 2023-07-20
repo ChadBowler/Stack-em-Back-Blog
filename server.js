@@ -4,6 +4,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+require('dotenv').config();
 //internal imports
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 3001;
 
 // Set up sessions with cookies
 const sess = {
-  secret: 'Super Secret Secret',
+  secret: process.env.SECRET_COOKIE,
   cookie: {
     // Stored in milliseconds
     maxAge:  25 * 60 * 1000, // expires after 25 minutes
