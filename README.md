@@ -3,7 +3,7 @@
 # ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Description
-Stack 'em Back Blog is a CMS-style blog site where anyone can create blog posts or comment on other's posts
+Stack 'em Back Blog is a CMS-style blog site where anyone can create blog posts or comment on other's posts. You must sign in to the application in order to add comments, or to add, update or delete blogs. Blogs may be viewed even while logged out.
 
 ## Table of Contents
 
