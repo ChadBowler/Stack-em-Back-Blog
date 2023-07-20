@@ -1,3 +1,4 @@
+//front end logic for adding data
 const blogFormHandler = async (event) => {
     event.preventDefault();
   
@@ -41,20 +42,20 @@ const blogFormHandler = async (event) => {
       }
     }
   };
-
+//event listeners set in try blocks to prevent errors when one of the forms is not on the page
   try {
     document
   .querySelector('.add-comment-form')
   .addEventListener('submit', commentFormHandler);
   } catch (error) {
-    
-  }
+    console.log(error);
+  };
   
 try {
     document
   .querySelector('.add-blog-form')
   .addEventListener('submit', blogFormHandler);
 } catch (error) {
-    
-}
+    console.log(error);
+};
   

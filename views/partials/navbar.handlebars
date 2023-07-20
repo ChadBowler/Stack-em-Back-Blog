@@ -3,15 +3,16 @@
     <div class="navbar-start columns is-vcentered">
       <a class="nav-link red-link active column caveat-text is-size-3 m-2" aria-current="page" href="/">Home</a>
       <a class="nav-link red-link column caveat-text is-size-3 m-2" href="/api/users/dashboard">Dashboard</a>
+      {{!-- either render the logout button, or a dropdown account button that has signup and login options --}}
       {{#if loggedIn}}
       <button id="logout" class="button is-medium ibm-text m-2">Logout</button>
       {{else}}
       <div class="navbar-item has-dropdown is-hoverable column m-2">
         <a class="navbar-link red-link is-arrowless caveat-text is-size-3 p-2">Account</a>
-          <div class="navbar-dropdown" role="menu">
-            <a class="navbar-item ibm-text menu-item" href="/signup">Sign Up</a>
-            <a class="navbar-item ibm-text menu-item" href="/login">Login</a>
-          </div>
+        <div class="navbar-dropdown" role="menu">
+          <a class="navbar-item ibm-text menu-item" href="/signup">Sign Up</a>
+          <a class="navbar-item ibm-text menu-item" href="/login">Login</a>
+        </div>
       </div>
       {{/if}}
     </div>

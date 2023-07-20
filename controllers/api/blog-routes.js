@@ -7,15 +7,13 @@ router.get('/', async (req, res) => {
     const blogData = await Blog.findAll({
       include: [{ 
         model: User
-      },
-    ]
+      }]
     });
     if (!blogData) {
-      res.status(404).json({ message: 'No Blogs found!' });
+      res.status(404).render('404');
       return;
     }
-    res.render('blog', { blogData, loggedIn: req.session.loggedIn })
-    // res.status(200).json(blogData);
+    res.status(200).render('blog', { blogData, loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -24,12 +22,11 @@ router.get('/', async (req, res) => {
 // get one Blog
 router.get('/:id', async (req, res) => {
   try {
-    
     const blogData = await Blog.findByPk(req.params.id, {
       include: [{ 
         model: User
       },
-      {//get comments associated with this blog
+      {//get comments associated with this blog. Set created_at to createdAt due to a bug getting the date to work
         model: Comment,
         attributes: ['user_name', 'comment_content', 'blog_id', ['created_at', 'createdAt']],
        }]
@@ -39,21 +36,20 @@ router.get('/:id', async (req, res) => {
       return;
     }
     const blog = blogData.get({ plain: true});
-    res.render('blog', { blog, loggedIn: req.session.loggedIn })
+    res.status(200).render('blog', { blog, loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// get update blog page
+// get update blog page (this is to render the page, which is not the same as doing a PUT request)
 router.get('/update/:id', async (req, res) => {
   try {
-    
     const blogData = await Blog.findByPk(req.params.id, {
       include: [{ 
         model: User
       },
-      {//get comments associated with this blog
+      {//get comments associated with this blog. Set created_at to createdAt due to a bug getting the date to work
         model: Comment,
         attributes: ['user_name', 'comment_content', 'blog_id', ['created_at', 'createdAt']],
        }]
@@ -63,7 +59,7 @@ router.get('/update/:id', async (req, res) => {
       return;
     }
     const blog = blogData.get({ plain: true});
-    res.render('blog-update', { blog, loggedIn: req.session.loggedIn })
+    res.status(200).render('blog-update', { blog, loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json(err);
   }
@@ -82,8 +78,7 @@ router.post('/', async (req, res) => {
                 //set the user_id to the current session user
                 user_id: req.session.user
             });
-            // res.redirect(`blogs/${blog.id}`)   
-            res.status(200).redirect('/')
+            res.status(201).redirect('/')
         };
     } catch (err) {
         res.status(400).json(err)
@@ -96,8 +91,7 @@ router.put('/:id', async (req, res) => {
         const blogData = await Blog.findByPk(req.params.id, {
           include: [{ 
             model: User
-          },
-        ]
+          }]
         });
         //run checks to make sure there is a current session, the blog can be found, and the user is the owner of the blog
         if (!req.session.loggedIn) {
@@ -118,16 +112,13 @@ router.put('/:id', async (req, res) => {
         res.status(500).json(err);
       };
 });
-
+//delete blog
 router.delete('/:id', async (req, res) => {
-  
     try {
-      
         const blogData = await Blog.findByPk(req.params.id, {
           include: [{ 
             model: User
-          },
-        ]
+          },]
         });
         //run checks to make sure there is a current session, the blog can be found, and the user is the owner of the blog
         if (!req.session.loggedIn) {
@@ -145,9 +136,9 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
       };
 });
-
+//wildcard route just in case
 router.get('/*', (req, res) => {
   res.status(404).render('404');
-})
+});
 
 module.exports = router;

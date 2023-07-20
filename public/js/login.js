@@ -10,7 +10,7 @@ const loginFormHandler = async (event) => {
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+      //send the user to the homepage upon successful login, otherwise use alert for failed login
       if (response.ok) {
         document.location.replace('/');
       } else {
@@ -32,7 +32,7 @@ const loginFormHandler = async (event) => {
         body: JSON.stringify({ username, email, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+      //send the user to the homepage upon successful login, otherwise send an alert
       if (response.ok) {
         document.location.replace('/');
       } else {
@@ -40,13 +40,14 @@ const loginFormHandler = async (event) => {
       }
     }
   };
+//event listeners set in try blocks to prevent errors if one of them isn't on the current page
   try {
     document
     .querySelector('.login-form')
     .addEventListener('submit', loginFormHandler);  
   } catch (error) {
     console.log(error);
-  }
+  };
   
   try {
     document
@@ -54,7 +55,7 @@ const loginFormHandler = async (event) => {
     .addEventListener('submit', signupFormHandler);
   } catch (error) {
       console.log(error);
-  }
+  };
   
   
   

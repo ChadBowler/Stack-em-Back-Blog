@@ -1,9 +1,10 @@
+//libraries
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-
+//internal imports
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
@@ -13,10 +14,10 @@ const PORT = process.env.PORT || 3001;
 
 // Set up sessions with cookies
 const sess = {
-  secret: 'Super secret secret',
+  secret: process.env.SECRET_COOKIE,
   cookie: {
     // Stored in milliseconds
-    maxAge:  5 * 60 * 1000, // expires after 5 minutes
+    maxAge:  25 * 60 * 1000, // expires after 25 minutes
   },
   resave: false,
   saveUninitialized: true,

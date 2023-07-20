@@ -54,7 +54,7 @@ const userData = [
   }
   ];
 
-
+//use the individualHooks: true option so the passwords are still being hashed before being saved
 const seedUsers = () => User.bulkCreate(userData, { individualHooks: true });
 
 

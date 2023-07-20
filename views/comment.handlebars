@@ -1,5 +1,4 @@
 <div class="container column is-multiline card-backing box-shadow">
-   
     <div class="card-backing card-body m-3">
         <a href="/api/blogs/{{blog.id}}">
             <div class="card-body p-3 box-shadow">
@@ -16,14 +15,11 @@
                         {{> comment-details}}
                     {{/each}}
                 </div>
-
-                
             </div>
         </a>
     </div>
   <div class="container m-3">
         <form class="add-comment-form">
-            
             <input class="textarea form-control m-3 ibm-text box-shadow" id="comment-content" placeholder="Comment...">
             <input type="number" style="display: none;" id="blog-id" value="{{blog.id}}" readonly aria-readonly="true">
             <button class="button ibm-text box-shadow" type="submit">Add Comment</button>

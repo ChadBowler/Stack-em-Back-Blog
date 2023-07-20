@@ -1,5 +1,4 @@
 <div class="container">
-   
     <div class="card-backing box-shadow p-2">
         <a href="/api/blogs/{{blog.id}}">
             <div class="card-body box-shadow p-3 m-3">
@@ -16,7 +15,7 @@
                         {{> comment-details}}
                     {{/each}}
                 </div>
-
+{{!-- add comment, update, and delete options will only load if a user is logged in --}}
                 {{#if loggedIn}}
                 <div class="columns">
                     <div class="column is-4 card-footer">

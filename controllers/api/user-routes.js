@@ -9,12 +9,11 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: req.body.password,
     });
-
+    //setting the loggedIn variable, and assigning a user variable in the session to the username provided by the user
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user = req.body.username;
       res.status(200).redirect('/');
-    //   res.status(200).json(userData);
     });
   } catch (err) {
     console.log(err);
@@ -22,7 +21,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-//dashboard
+//dashboard route
 router.get('/dashboard', async (req, res) => {
     try {
       if (!req.session.loggedIn) {
@@ -45,7 +44,6 @@ router.get('/dashboard', async (req, res) => {
         }
         const blogs = blogData.map((blog) => blog.get({ plain:true }))
         res.render('dashboard', { blogs, loggedIn: req.session.loggedIn })
-        // res.status(200).json(blogData);
       }
       } catch (err) {
         res.status(500).json(err);
@@ -61,7 +59,7 @@ router.post('/login', async (req, res) => {
         username: req.body.username,
       },
     });
-    //username validation
+    //username validation - an alert will be posted upon failed login, logic in front end script
     if (!userData) {
       res
         .status(400)
@@ -77,15 +75,11 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
-    //upon validation, save session
+    //upon validation, save session and set session variables
     req.session.save(() => {
       req.session.loggedIn = true;
       req.session.user = req.body.username;
-      console.log(
-        '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-        req.session.cookie
-      );
-
+      //backend response. On the front end, the user is redirected to the home page.
       res
         .status(200)
         .json({ user: userData, message: 'You are now logged in!' });
@@ -106,9 +100,9 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
-
+//wildcard route
 router.get('/*', (req, res) => {
   res.status(404).render('404');
-})
+});
 
 module.exports = router;

@@ -1,4 +1,3 @@
-
 <div class="card-backing container column is-multiline box-shadow">
     <div class="container m-3 columns-12">
     {{#each blogs as |blog|}}
@@ -20,7 +19,7 @@
                             </div>
                         {{/each}}
                     </div>
-
+{{!-- allow add comment link to be displayed if a user is logged in --}}
                     {{#if loggedIn}}
                     <a href="/api/comments/{{blog.id}}" class="card-link">Add a comment</a>
                     {{/if}}

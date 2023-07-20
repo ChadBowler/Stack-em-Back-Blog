@@ -19,6 +19,7 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    //attach the blog to the user via username
     user_id: {
       type: DataTypes.STRING,
       references: {
