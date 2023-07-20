@@ -9,12 +9,11 @@ Stack 'em Back Blog is a CMS-style blog site where anyone can create blog posts 
 
 - [Installation](#Installation)
 - [Usage](#Usage)
-- [Credits](#Credits)
-- [License](#Credits)
+- [Screenshot](#Screenshot)
+- [License](#License)
 - [Badges](#Badges)
-- [Features](#Features)
 - [Contributing](#Contributing)
-- [Tests](#Tests)
+- [Questions](#Questions)
 
 ## Installation
 
@@ -22,7 +21,10 @@ Stack 'em Back Blog is a CMS-style blog site where anyone can create blog posts 
 
 ## Usage
 
-* Go to the deployed site
+* Go to the deployed site [here](https://stack-em-back-blog-d06f61c5c0a9.herokuapp.com/)
+
+## Screenshot
+![Stack 'em Back Blog](https://github.com/ChadBowler/Stack-em-Back-Blog/assets/127648744/611c944e-cafe-4ab0-ae12-d58ae229544f)
 
 
 ## License
@@ -32,10 +34,6 @@ Stack 'em Back Blog is a CMS-style blog site where anyone can create blog posts 
 ## Contributing
 
 * Pull requests may be made for improvements.
-
-## Tests
-
-* No tests available for this application.
 
 ## Questions
 
