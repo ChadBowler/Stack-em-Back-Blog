@@ -48,7 +48,7 @@ Welcome to Stack 'em Back Blog, a dynamic CMS-style blog site that empowers indi
 
 ## Questions
 
-* Checkout my [website](https://www.chadbowler.com)!
+* Checkout my [website](https://www.chadbowler.com)! 🎉
 
 * If you have questions, feel free to contact me at: cbowlerdev@gmail.com
 
