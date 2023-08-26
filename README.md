@@ -1,4 +1,4 @@
-# Stack 'em Back Blog
+# Stack 'em Back Blog 📝
 
 # ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -26,13 +26,13 @@ Welcome to Stack 'em Back Blog, a dynamic CMS-style blog site that empowers indi
 
 ### To get started, follow these simple steps:
 
-* Sign Up/Log In: If you're new here, create an account to unlock the full potential of Stack 'em Back Blog. If you're a returning user, simply log in to pick up where you left off.
+✅ Sign Up/Log In: If you're new here, create an account to unlock the full potential of Stack 'em Back Blog. If you're a returning user, simply log in to pick up where you left off.
 
-* Exploring Blogs: Browse through a diverse range of blogs covering various topics. Feel free to explore without an account and get a taste of the enriching content our community has to offer.
+✅ Exploring Blogs: Browse through a diverse range of blogs covering various topics. Feel free to explore without an account and get a taste of the enriching content our community has to offer.
 
-* Engage and Interact: Once you're logged in, leave your mark by commenting on blogs that resonate with you. Alternatively, let your creativity shine by crafting well-crafted posts that capture your unique perspective.
+✅ Engage and Interact: Once you're logged in, leave your mark by commenting on blogs that resonate with you. Alternatively, let your creativity shine by crafting well-crafted posts that capture your unique perspective.
 
-* Managing Your Blogs: As a registered user, you have the privilege of managing your own blogs. Edit or delete your existing posts to keep your content up to date.
+✅ Managing Your Blogs: As a registered user, you have the privilege of managing your own blogs. Edit or delete your existing posts to keep your content up to date.
 
 ## Screenshot
 ![Stack 'em Back Blog](https://github.com/ChadBowler/Stack-em-Back-Blog/assets/127648744/611c944e-cafe-4ab0-ae12-d58ae229544f)
